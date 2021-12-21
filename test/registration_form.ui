@@ -68,7 +68,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_login"/>
+         <widget class="QLineEdit" name="lineEdit_login">
+          <property name="echoMode">
+           <enum>QLineEdit::Normal</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -89,6 +93,9 @@
             <height>0</height>
            </size>
           </property>
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -103,7 +110,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_confirm_password"/>
+         <widget class="QLineEdit" name="lineEdit_confirm_password">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

@@ -7,26 +7,27 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    query = new QSqlQuery(db);
    // ui->pushButton->setStyleSheet("background-color: orange;border-style: outset;border-width: 2px;border-radius: 10px;border-color: beige;");
-    registration = new Registration_form();
-    connect(registration, &Registration_form::mainWindow, this, &MainWindow::show);
+
 
     db.setDatabaseName("./main.db");
 
-    query = new QSqlQuery(db);
 
-    query->exec("CREATE TABLE us (id INT PRIMARY KEY);");
 
     if(!db.open()){
         qDebug() << "Not conected";
     } else{
         qDebug() << "Conected";
     }
+    registration = new Registration_form(db, query);
+    connect(registration, &Registration_form::mainWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    db.close();
 }
 
 QString s = "";
@@ -43,7 +44,7 @@ void MainWindow::on_pushButton_clicked() {
    }*/
    while(query->next()){
        qDebug() << query->value(0);
-       if(ui->lineEdit_login->text() == query->value(1) && ui->lineEdit_password->text() == query->value(2)){
+       if(ui->lineEdit_login->text() == query->value(1) && s == query->value(2)){
            qDebug() << "OK";
        } else{
            QMessageBox::about(this, "Ошибка", "Неверный логин или пароль");
