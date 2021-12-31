@@ -2,7 +2,7 @@
 #include "ui_registration_form.h"
 #include "QMessageBox"
 
-int count = 1;
+
 
 Registration_form::Registration_form(QSqlDatabase db, QSqlQuery *query, QWidget *parent) :
     QMainWindow(parent),
@@ -22,12 +22,22 @@ Registration_form::~Registration_form()
     delete ui;
 }
 
-void Registration_form::on_pushButton_back_clicked()
+void delay1()
 {
-    this->close();
-    emit mainWindow();
+    QTime dieTime= QTime::currentTime().addMSecs(30);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
+int initialize_count(QSqlDatabase db){
+    QSqlQuery *query = new QSqlQuery(db);
+    int count = 0;
+    query->exec("SELECT * FROM users");
+    while (query->next()){
+        count++;
+    }
+    return count;
+}
 
 void Registration_form::on_pushButton_registrate_clicked()
 {
@@ -37,20 +47,34 @@ void Registration_form::on_pushButton_registrate_clicked()
             QMessageBox::about(this, "Ошибка", "Пароли не совпадают");
         } else{
             query->prepare("INSERT INTO users (id, login, password) VALUES (:id, :login, :password)");
-            query->bindValue(":id", count);
+            query->bindValue(":id", initialize_count(db));
             query->bindValue(":login", ui->lineEdit_login->text());
             query->bindValue(":password", ui->lineEdit_password->text());
-            qDebug() << sizeof(count) << " " << sizeof(ui->lineEdit_login->text()) << " " << sizeof(ui->lineEdit_password->text()) << " " << ui->lineEdit_password->text();
 
             if(!query->exec()){
                    qDebug() << "err";
+                   QMessageBox::about(this, "Ошибка", "Совпадение логинов");
                } else{
                    qDebug() << "ok";
+                   ui->lineEdit_login->clear();
+                   ui->lineEdit_password->clear();
+                   ui->lineEdit_confirm_password->clear();
+                   emit mainWindow();
+                   delay1();
+                   this->close();
                }
-             count++;
         }
     } else{
         QMessageBox::about(this, "Ошибка", "Заполните все поля");
     }
 }
 
+void Registration_form::on_pushButton_back_clicked()
+{
+    ui->lineEdit_login->clear();
+    ui->lineEdit_password->clear();
+    ui->lineEdit_confirm_password->clear();
+    emit mainWindow();
+    delay1();
+    this->close();
+}

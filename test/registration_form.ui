@@ -120,8 +120,14 @@
       </item>
       <item>
        <widget class="QCheckBox" name="checkBox">
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
         <property name="text">
          <string>соглашение</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -130,14 +136,14 @@
         <item>
          <widget class="QPushButton" name="pushButton_back">
           <property name="text">
-           <string>back</string>
+           <string>Назад</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_registrate">
           <property name="text">
-           <string>registrate</string>
+           <string>Авторизация</string>
           </property>
          </widget>
         </item>

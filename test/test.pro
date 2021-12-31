@@ -9,15 +9,21 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    account.cpp \
+    changeprofile.cpp \
     main.cpp \
     mainwindow.cpp \
     registration_form.cpp
 
 HEADERS += \
+    account.h \
+    changeprofile.h \
     mainwindow.h \
     registration_form.h
 
 FORMS += \
+    account.ui \
+    changeprofile.ui \
     mainwindow.ui \
     registration_form.ui
 

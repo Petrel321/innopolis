@@ -27,7 +27,7 @@ private slots:
 
 private:
     Ui::Registration_form *ui;
-     QSqlDatabase db;
+    QSqlDatabase db;
     QSqlQuery *query;
 };
 

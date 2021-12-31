@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "registration_form.h"
+#include "account.h"
 #include "QtSql"
 #include "QSqlDatabase"
 #include "QSqlQuery"
@@ -22,13 +23,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-    void on_lineEdit_password_cursorPositionChanged(int arg1, int arg2);
-
     void on_pushButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;
     Registration_form *registration;
+    account *acc;
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     QSqlQuery *query;
 };
