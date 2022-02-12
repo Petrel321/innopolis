@@ -32,8 +32,8 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_4;
-    QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
+    QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *lineEdit_login;
     QVBoxLayout *verticalLayout_2;
@@ -43,9 +43,9 @@ public:
     QLabel *label_3;
     QLineEdit *lineEdit_confirm_password;
     QCheckBox *checkBox;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_back;
+    QVBoxLayout *verticalLayout_5;
     QPushButton *pushButton_registrate;
+    QPushButton *pushButton_back;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
@@ -68,12 +68,12 @@ public:
         verticalLayout_4->setSpacing(4);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(6, 6, 6, 6);
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer);
+        verticalLayout_4->addItem(verticalSpacer);
 
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
 
@@ -82,6 +82,7 @@ public:
         lineEdit_login = new QLineEdit(centralwidget);
         lineEdit_login->setObjectName(QString::fromUtf8("lineEdit_login"));
         lineEdit_login->setEchoMode(QLineEdit::Normal);
+        lineEdit_login->setClearButtonEnabled(true);
 
         verticalLayout->addWidget(lineEdit_login);
 
@@ -99,6 +100,7 @@ public:
         lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
         lineEdit_password->setMinimumSize(QSize(0, 0));
         lineEdit_password->setEchoMode(QLineEdit::Password);
+        lineEdit_password->setClearButtonEnabled(true);
 
         verticalLayout_2->addWidget(lineEdit_password);
 
@@ -115,6 +117,7 @@ public:
         lineEdit_confirm_password = new QLineEdit(centralwidget);
         lineEdit_confirm_password->setObjectName(QString::fromUtf8("lineEdit_confirm_password"));
         lineEdit_confirm_password->setEchoMode(QLineEdit::Password);
+        lineEdit_confirm_password->setClearButtonEnabled(true);
 
         verticalLayout_3->addWidget(lineEdit_confirm_password);
 
@@ -123,25 +126,27 @@ public:
 
         checkBox = new QCheckBox(centralwidget);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBox->setMouseTracking(true);
+        checkBox->setFocusPolicy(Qt::StrongFocus);
         checkBox->setInputMethodHints(Qt::ImhNone);
         checkBox->setChecked(true);
 
         verticalLayout_4->addWidget(checkBox);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        pushButton_back = new QPushButton(centralwidget);
-        pushButton_back->setObjectName(QString::fromUtf8("pushButton_back"));
-
-        horizontalLayout->addWidget(pushButton_back);
-
+        verticalLayout_5 = new QVBoxLayout();
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         pushButton_registrate = new QPushButton(centralwidget);
         pushButton_registrate->setObjectName(QString::fromUtf8("pushButton_registrate"));
 
-        horizontalLayout->addWidget(pushButton_registrate);
+        verticalLayout_5->addWidget(pushButton_registrate);
+
+        pushButton_back = new QPushButton(centralwidget);
+        pushButton_back->setObjectName(QString::fromUtf8("pushButton_back"));
+
+        verticalLayout_5->addWidget(pushButton_back);
 
 
-        verticalLayout_4->addLayout(horizontalLayout);
+        verticalLayout_4->addLayout(verticalLayout_5);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -171,12 +176,12 @@ public:
     void retranslateUi(QMainWindow *Registration_form)
     {
         Registration_form->setWindowTitle(QCoreApplication::translate("Registration_form", "MainWindow", nullptr));
-        label->setText(QCoreApplication::translate("Registration_form", "login", nullptr));
-        label_2->setText(QCoreApplication::translate("Registration_form", "password", nullptr));
-        label_3->setText(QCoreApplication::translate("Registration_form", "confirm password", nullptr));
+        label->setText(QCoreApplication::translate("Registration_form", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        label_2->setText(QCoreApplication::translate("Registration_form", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_3->setText(QCoreApplication::translate("Registration_form", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\266\320\264\320\265\320\275\320\270\320\265 \320\277\320\260\321\200\320\276\320\273\321\217", nullptr));
         checkBox->setText(QCoreApplication::translate("Registration_form", "\321\201\320\276\320\263\320\273\320\260\321\210\320\265\320\275\320\270\320\265", nullptr));
-        pushButton_back->setText(QCoreApplication::translate("Registration_form", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         pushButton_registrate->setText(QCoreApplication::translate("Registration_form", "\320\220\320\262\321\202\320\276\321\200\320\270\320\267\320\260\321\206\320\270\321\217", nullptr));
+        pushButton_back->setText(QCoreApplication::translate("Registration_form", "\320\235\320\260\320\267\320\260\320\264", nullptr));
     } // retranslateUi
 
 };

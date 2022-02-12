@@ -26,6 +26,8 @@ private slots:
 
     void on_pushButton_save_changes_clicked();
 
+    void on_pushButton_exit_clicked();
+
 private:
     Ui::changeprofile *ui;
     QSqlDatabase db;

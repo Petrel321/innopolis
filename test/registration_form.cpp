@@ -9,6 +9,14 @@ Registration_form::Registration_form(QSqlDatabase db, QSqlQuery *query, QWidget 
     ui(new Ui::Registration_form)
 {
     ui->setupUi(this);
+
+    this->setStyleSheet("color: white; background-color: #022140; font: 18px Roboto;");
+    ui->lineEdit_login->setStyleSheet("background-color: #98A9C9;border-style: outset; border-width: 2px; border-radius: 10px;border-color: #E9AA08; max-width:180px; padding: 4px 2px;");
+    ui->lineEdit_password->setStyleSheet("background-color: #98A9C9; border-style: outset;border-width: 2px; border-radius: 10px;border-color: #E9AA08; max-width:180px; padding: 4px 2px;");
+    ui->lineEdit_confirm_password->setStyleSheet("background-color: #98A9C9; border-style: outset; border-width: 2px;border-radius: 10px;border-color: #E9AA08; max-width:180px; padding: 4px 2px;");
+    ui->pushButton_back->setStyleSheet("background-color: #E9AA08; border-style: outset; border-radius: 10px; max-width: 120px; margin: 0 auto; padding: 3px 6px;");
+    ui->pushButton_registrate->setStyleSheet("background-color: #E9AA08; border-style: outset; border-radius: 10px; max-width: 120px; margin: 0 auto; padding: 3px 6px;");
+    ui->label_3->setWordWrap(true);
     this->db = db;
     if(!this->db.open()){
         qDebug() << "Not conected";
@@ -22,7 +30,7 @@ Registration_form::~Registration_form()
     delete ui;
 }
 
-void delay1()
+void Registration_form::delay()
 {
     QTime dieTime= QTime::currentTime().addMSecs(30);
     while (QTime::currentTime() < dieTime)
@@ -31,7 +39,7 @@ void delay1()
 
 int initialize_count(QSqlDatabase db){
     QSqlQuery *query = new QSqlQuery(db);
-    int count = 0;
+    int count = 1;
     query->exec("SELECT * FROM users");
     while (query->next()){
         count++;
@@ -42,8 +50,8 @@ int initialize_count(QSqlDatabase db){
 void Registration_form::on_pushButton_registrate_clicked()
 {
     query = new QSqlQuery(db);
-    if(ui->checkBox->isChecked() && ui->lineEdit_login->text() != "" && ui->lineEdit_password->text()!= "" && ui->lineEdit_confirm_password->text()!= ""){
-        if(ui->lineEdit_password->text()!=  ui->lineEdit_confirm_password->text()){
+    if(ui->checkBox->isChecked() && ui->lineEdit_login->text() != "" && ui->lineEdit_password->text() != "" && ui->lineEdit_confirm_password->text() != ""){
+        if(ui->lineEdit_password->text() !=  ui->lineEdit_confirm_password->text()){
             QMessageBox::about(this, "Ошибка", "Пароли не совпадают");
         } else{
             query->prepare("INSERT INTO users (id, login, password) VALUES (:id, :login, :password)");
@@ -60,7 +68,7 @@ void Registration_form::on_pushButton_registrate_clicked()
                    ui->lineEdit_password->clear();
                    ui->lineEdit_confirm_password->clear();
                    emit mainWindow();
-                   delay1();
+                   Registration_form::delay();
                    this->close();
                }
         }
@@ -75,6 +83,12 @@ void Registration_form::on_pushButton_back_clicked()
     ui->lineEdit_password->clear();
     ui->lineEdit_confirm_password->clear();
     emit mainWindow();
-    delay1();
+    Registration_form::delay();
     this->close();
 }
+
+void Registration_form::on_checkBox_clicked()
+{
+     QMessageBox::about(this, "123", "не забыть про фотку");
+}
+

@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void delay();
+
 private:
     Ui::MainWindow *ui;
     Registration_form *registration;

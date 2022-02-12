@@ -2,15 +2,26 @@
 #include "ui_mainwindow.h"
 #include "QMessageBox"
 #include "QDebug"
+#include "QGraphicsDropShadowEffect"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setStyleSheet("color: white; background-color: #022140; font: 18px Roboto;");
+    ui->lineEdit_login->setStyleSheet("background-color: #98A9C9;border-style: outset; border-width: 2px; border-radius: 10px; border-color: #E9AA08; max-width:180px; margin-bottom: 8px; padding: 2px;");
+    ui->lineEdit_password->setStyleSheet("background-color: #98A9C9;border-style: outset; border-width: 2px; border-radius: 10px; border-color: #E9AA08; max-width:180px; padding: 2px;");
+    ui->pushButton_2->setStyleSheet("background-color: #E9AA08; border-style: outset; border-radius: 10px; max-width: 120px; margin: 16px auto 4px; padding: 3px 6px;");
+    ui->pushButton->setStyleSheet("background-color: #E9AA08; border-style: outset; border-radius: 10px; max-width: 120px; margin: 0 auto; padding: 3px 6px;");
+
+    QGraphicsDropShadowEffect *effect = new QGraphicsDropShadowEffect;
+    effect->setXOffset(2);
+    effect->setYOffset(2);
+    effect->setColor("#7B4E4E");
+    ui->pushButton_2->setGraphicsEffect(effect);
+
     query = new QSqlQuery(db);
-
-
     db.setDatabaseName("./main.db");
     if(!db.open()){
         qDebug() << "Not conected";
@@ -28,7 +39,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void delay()
+void MainWindow::delay()
 {
     QTime dieTime= QTime::currentTime().addMSecs(30);
     while (QTime::currentTime() < dieTime)
@@ -50,7 +61,7 @@ void MainWindow::on_pushButton_clicked() {
             connect(acc, &account::mainWindow, this, &MainWindow::show);
 
             acc->show();
-            delay();
+            MainWindow::delay();
             this->close();
         }
     }
@@ -64,7 +75,7 @@ void MainWindow::on_pushButton_clicked() {
 void MainWindow::on_pushButton_2_clicked()
 {
     registration->show();
-    delay();
+    MainWindow::delay();
     this->close();
 }
 

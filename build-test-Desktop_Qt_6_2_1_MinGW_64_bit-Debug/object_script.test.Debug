@@ -1,0 +1,14 @@
+debug/account.o
+debug/changeprofile.o
+debug/main.o
+debug/mainwindow.o
+debug/registration_form.o
+debug/solving.o
+debug/tasks.o
+debug/qrc_src.o
+debug/moc_account.o
+debug/moc_changeprofile.o
+debug/moc_mainwindow.o
+debug/moc_registration_form.o
+debug/moc_solving.o
+debug/moc_tasks.o

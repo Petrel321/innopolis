@@ -60,8 +60,8 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>70</width>
-          <height>70</height>
+          <width>80</width>
+          <height>80</height>
          </size>
         </property>
         <property name="autoFillBackground">
@@ -106,8 +106,18 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="text">
            <string>login</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -192,7 +202,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="startsolving">
           <property name="text">
            <string>Приступить к решению</string>
           </property>

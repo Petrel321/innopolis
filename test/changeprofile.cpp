@@ -5,7 +5,7 @@
 #include "QDebug"
 #include "QFile"
 
-QFile* photo;
+QFile* photo = nullptr;
 QVariant id_user;
 
 changeprofile::changeprofile(QSqlDatabase db, QSqlQuery *query, QVariant id, QWidget *parent) :
@@ -46,28 +46,43 @@ void changeprofile::on_pushButton_choose_file_clicked()
 
 void changeprofile::on_pushButton_save_changes_clicked()
 {
-    if (!photo->open(QIODevice::ReadOnly)) qDebug() << "Error with openning file";
-    QByteArray in = photo->readAll();
+    if(photo != nullptr){
+        if (!photo->open(QIODevice::ReadOnly)) qDebug() << "Error with openning file";
 
-    query->exec("SELECT * FROM users");
-    while (query->next()){
-        if(query->value(0) == id_user){
-            int id = query->value(0).toInt();
-            QString login = query->value(1).toString();
-            QString password = query->value(2).toString();
-            query = new QSqlQuery(db);
-            query->prepare("INSERT INTO users (id, login, password, avatar) VALUES (:id, :login, :password, :avatar)");
-            query->bindValue(":id", id);
-            query->bindValue(":login", login);
-            query->bindValue(":password",password);
-            query->bindValue(":avatar", in);
-            if (!query->exec()){
-                qDebug()<< "Error load file" << query->lastError();
-            }
-            break;
+        QByteArray in = photo->readAll();
+
+        query = new QSqlQuery(db);
+        qDebug() << id_user.toString();
+        query->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        query->bindValue(":avatar", in);
+        query->bindValue(":id", id_user);
+        if (!query->exec()){
+            qDebug()<< "Error load file" << query->lastError();
         }
-    }
+        photo = nullptr;
 
-  // query->exec("UPDATE users SET avatar = " + QString::fromStdString(in.toStdString()) + " WHERE id = " + QString::number(id_user.toInt()));
+
+    }
+    if(ui->lineEdit_newlogin->text() != ""){
+        query->prepare("UPDATE users SET login = :login WHERE id = :id");
+        query->bindValue(":login", ui->lineEdit_newlogin->text());
+        query->bindValue(":id", id_user);
+        if (!query->exec()){
+            qDebug()<< "Error load file" << query->lastError();
+        }
+        ui->lineEdit_newlogin->setPlaceholderText(ui->lineEdit_newlogin->text());
+    }
+    on_pushButton_exit_clicked();
+
+}
+
+
+
+void changeprofile::on_pushButton_exit_clicked()
+{
+    ui->lineEdit_newlogin->clear();
+
+    emit account();
+    this->close();
 }
 

@@ -32,15 +32,15 @@ public:
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout;
-    QSpacerItem *verticalSpacer_3;
+    QSpacerItem *verticalSpacer;
     QLabel *label_login;
     QLineEdit *lineEdit_login;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_password;
     QLineEdit *lineEdit_password;
-    QPushButton *pushButton;
     QPushButton *pushButton_2;
-    QSpacerItem *verticalSpacer_4;
+    QPushButton *pushButton;
+    QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -63,9 +63,9 @@ public:
         verticalLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addItem(verticalSpacer_3);
+        verticalLayout->addItem(verticalSpacer);
 
         label_login = new QLabel(centralwidget);
         label_login->setObjectName(QString::fromUtf8("label_login"));
@@ -74,6 +74,7 @@ public:
 
         lineEdit_login = new QLineEdit(centralwidget);
         lineEdit_login->setObjectName(QString::fromUtf8("lineEdit_login"));
+        lineEdit_login->setClearButtonEnabled(false);
 
         verticalLayout->addWidget(lineEdit_login);
 
@@ -82,6 +83,7 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setSizeConstraint(QLayout::SetMinAndMaxSize);
         label_password = new QLabel(centralwidget);
         label_password->setObjectName(QString::fromUtf8("label_password"));
         label_password->setMaximumSize(QSize(16777215, 16777215));
@@ -91,25 +93,31 @@ public:
         lineEdit_password = new QLineEdit(centralwidget);
         lineEdit_password->setObjectName(QString::fromUtf8("lineEdit_password"));
         lineEdit_password->setEchoMode(QLineEdit::Password);
+        lineEdit_password->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        lineEdit_password->setClearButtonEnabled(true);
 
         verticalLayout_2->addWidget(lineEdit_password);
 
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        verticalLayout_3->addWidget(pushButton);
-
         pushButton_2 = new QPushButton(centralwidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         verticalLayout_3->addWidget(pushButton_2);
 
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setEnabled(true);
+        pushButton->setCursor(QCursor(Qt::ArrowCursor));
+        pushButton->setAutoDefault(false);
+        pushButton->setFlat(false);
 
-        verticalLayout_3->addItem(verticalSpacer_4);
+        verticalLayout_3->addWidget(pushButton);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_2);
 
 
         horizontalLayout->addLayout(verticalLayout_3);
@@ -129,16 +137,21 @@ public:
 
         retranslateUi(MainWindow);
 
+        pushButton->setDefault(false);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_login->setText(QCoreApplication::translate("MainWindow", "login", nullptr));
-        label_password->setText(QCoreApplication::translate("MainWindow", "password", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));
+        label_login->setText(QCoreApplication::translate("MainWindow", "\320\262\320\260\321\210 \320\273\320\276\320\263\320\270\320\275:", nullptr));
+        lineEdit_login->setPlaceholderText(QCoreApplication::translate("MainWindow", "kaktus", nullptr));
+        label_password->setText(QCoreApplication::translate("MainWindow", "\320\262\320\260\321\210 \320\277\320\260\321\200\320\276\320\273\321\214:", nullptr));
+        lineEdit_password->setPlaceholderText(QCoreApplication::translate("MainWindow", "12345Ab", nullptr));
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "\320\240\320\265\320\263\320\270\321\201\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270", nullptr));
     } // retranslateUi
 
 };

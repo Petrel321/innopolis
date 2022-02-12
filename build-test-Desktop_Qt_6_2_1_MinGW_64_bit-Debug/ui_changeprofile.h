@@ -40,7 +40,7 @@ public:
     QPushButton *pushButton_choose_file;
     QVBoxLayout *verticalLayout_4;
     QPushButton *pushButton_save_changes;
-    QPushButton *pushButton_2;
+    QPushButton *pushButton_exit;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
@@ -74,6 +74,7 @@ public:
 
         lineEdit_newlogin = new QLineEdit(centralwidget);
         lineEdit_newlogin->setObjectName(QString::fromUtf8("lineEdit_newlogin"));
+        lineEdit_newlogin->setClearButtonEnabled(true);
 
         verticalLayout->addWidget(lineEdit_newlogin);
 
@@ -102,10 +103,10 @@ public:
 
         verticalLayout_4->addWidget(pushButton_save_changes);
 
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_exit = new QPushButton(centralwidget);
+        pushButton_exit->setObjectName(QString::fromUtf8("pushButton_exit"));
 
-        verticalLayout_4->addWidget(pushButton_2);
+        verticalLayout_4->addWidget(pushButton_exit);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -142,7 +143,7 @@ public:
         label_2->setText(QCoreApplication::translate("changeprofile", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\204\320\276\321\202\320\276 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
         pushButton_choose_file->setText(QCoreApplication::translate("changeprofile", "\320\222\321\213\320\261\321\200\320\260\321\202\321\214 \321\204\320\260\320\271\320\273", nullptr));
         pushButton_save_changes->setText(QCoreApplication::translate("changeprofile", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("changeprofile", "\320\235\320\260\320\267\320\260\320\264", nullptr));
+        pushButton_exit->setText(QCoreApplication::translate("changeprofile", "\320\235\320\260\320\267\320\260\320\264", nullptr));
     } // retranslateUi
 
 };

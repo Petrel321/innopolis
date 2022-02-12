@@ -5,7 +5,8 @@
 #include "QtSql"
 #include "QSqlDatabase"
 #include "QSqlQuery"
-#include"changeprofile.h"
+#include "changeprofile.h"
+#include "tasks.h"
 
 namespace Ui {
 class account;
@@ -25,11 +26,20 @@ private slots:
 
     void on_pushButton_change_profile_clicked();
 
+    void on_pushButton_about_us_clicked();
+
+    void on_startsolving_clicked();
+
+public slots:
+    void update_changes();
+
 private:
     Ui::account *ui;
     QSqlDatabase db;
     QSqlQuery *query;
+
     changeprofile *newprofile;
+    tasks *startsolving;
 };
 
 #endif // ACCOUNT_H

@@ -1,0 +1,14 @@
+release/account.o
+release/changeprofile.o
+release/main.o
+release/mainwindow.o
+release/registration_form.o
+release/solving.o
+release/tasks.o
+release/qrc_src.o
+release/moc_account.o
+release/moc_changeprofile.o
+release/moc_mainwindow.o
+release/moc_registration_form.o
+release/moc_solving.o
+release/moc_tasks.o

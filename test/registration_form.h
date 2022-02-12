@@ -25,6 +25,10 @@ private slots:
 
     void on_pushButton_registrate_clicked();
 
+    void on_checkBox_clicked();
+
+    void delay();
+
 private:
     Ui::Registration_form *ui;
     QSqlDatabase db;

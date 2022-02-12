@@ -36,7 +36,7 @@ public:
     QLabel *label_3;
     QVBoxLayout *verticalLayout_3;
     QPushButton *pushButton_about_us;
-    QPushButton *pushButton_4;
+    QPushButton *startsolving;
     QPushButton *pushButton_exit;
     QSpacerItem *verticalSpacer_2;
     QMenuBar *menubar;
@@ -60,7 +60,7 @@ public:
         user_avatar = new QLabel(centralwidget);
         user_avatar->setObjectName(QString::fromUtf8("user_avatar"));
         user_avatar->setMinimumSize(QSize(50, 0));
-        user_avatar->setMaximumSize(QSize(70, 70));
+        user_avatar->setMaximumSize(QSize(80, 80));
         user_avatar->setAutoFillBackground(false);
         user_avatar->setMidLineWidth(0);
         user_avatar->setPixmap(QPixmap(QString::fromUtf8("../../Desktop/\320\277\321\200\320\276\320\263\320\260 \320\264\320\273\321\217 \320\270\320\275\320\275\320\276\320\277\320\276\320\273\320\270\321\201\320\260/\320\264\320\270\320\267\320\260\320\271\320\275/\320\260\320\262\320\260\321\202\320\260\321\200\320\272\320\260.jpg")));
@@ -78,6 +78,11 @@ public:
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setMaximumSize(QSize(16777215, 16777215));
+        QFont font;
+        font.setPointSize(14);
+        font.setBold(true);
+        label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(label_2);
 
@@ -116,10 +121,10 @@ public:
 
         verticalLayout_3->addWidget(pushButton_about_us);
 
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        startsolving = new QPushButton(centralwidget);
+        startsolving->setObjectName(QString::fromUtf8("startsolving"));
 
-        verticalLayout_3->addWidget(pushButton_4);
+        verticalLayout_3->addWidget(startsolving);
 
         pushButton_exit = new QPushButton(centralwidget);
         pushButton_exit->setObjectName(QString::fromUtf8("pushButton_exit"));
@@ -158,7 +163,7 @@ public:
         pushButton_change_profile->setText(QCoreApplication::translate("account", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
         label_3->setText(QCoreApplication::translate("account", "TextLabel", nullptr));
         pushButton_about_us->setText(QCoreApplication::translate("account", "\320\236 \320\277\321\200\320\270\320\273\320\276\320\266\320\265\320\275\320\270\320\270", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("account", "\320\237\321\200\320\270\321\201\321\202\321\203\320\277\320\270\321\202\321\214 \320\272 \321\200\320\265\321\210\320\265\320\275\320\270\321\216", nullptr));
+        startsolving->setText(QCoreApplication::translate("account", "\320\237\321\200\320\270\321\201\321\202\321\203\320\277\320\270\321\202\321\214 \320\272 \321\200\320\265\321\210\320\265\320\275\320\270\321\216", nullptr));
         pushButton_exit->setText(QCoreApplication::translate("account", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi
 
